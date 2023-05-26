@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<job xmlns="http://eobjects.org/analyzerbeans/job/1.0">
+    <job-metadata>
+        <job-description>Created with DataCleaner Community edition 5.8.1</job-description>
+        <author>user</author>
+        <updated-date>2023-05-26-03:00</updated-date>
+        <metadata-properties>
+            <property name="CoordinatesX.Desktop.operadores.csv">161</property>
+            <property name="CoordinatesY.Desktop.operadores.csv">187</property>
+        </metadata-properties>
+    </job-metadata>
+    <source>
+        <data-context ref="operadores.csv"/>
+        <columns>
+            <column id="col_tipooperador" path="TipoOperador" type="STRING"/>
+            <column id="col_operador" path="Operador" type="STRING"/>
+            <column id="col_departamento" path="Departamento" type="STRING"/>
+            <column id="col_localidad" path="Localidad" type="STRING"/>
+            <column id="col_direccion" path="Direccion" type="STRING"/>
+            <column id="col_telefono" path="Telefono" type="STRING"/>
+            <column id="col_web" path="Web" type="STRING"/>
+            <column id="col_email" path="EMail" type="STRING"/>
+            <column id="col_longitud" path="Longitud" type="STRING"/>
+            <column id="col_latitud" path="Latitud" type="STRING"/>
+        </columns>
+    </source>
+    <transformation/>
+    <analysis>
+        <analyzer>
+            <descriptor ref="Pattern finder"/>
+            <metadata-properties>
+                <property name="CoordinatesY">158</property>
+                <property name="CoordinatesX">350</property>
+            </metadata-properties>
+            <properties>
+                <property name="Discriminate text case" value="true"/>
+                <property name="Discriminate negative numbers" value="false"/>
+                <property name="Discriminate decimals" value="true"/>
+                <property name="Enable mixed tokens" value="true"/>
+                <property name="Ignore repeated spaces" value="false"/>
+                <property name="Upper case patterns expand in size" value="false"/>
+                <property name="Lower case patterns expand in size" value="true"/>
+                <property name="Predefined token name" value="&lt;null&gt;"/>
+                <property name="Predefined token regexes" value="&lt;null&gt;"/>
+                <property name="Decimal separator" value="."/>
+                <property name="Thousands separator" value="&amp;#44;"/>
+                <property name="Minus sign" value="-"/>
+            </properties>
+            <input ref="col_telefono" name="Column"/>
+        </analyzer>
+        <analyzer>
+            <descriptor ref="Mark rows"/>
+            <metadata-properties>
+                <property name="CoordinatesY">312</property>
+                <property name="CoordinatesX">274</property>
+            </metadata-properties>
+            <properties>
+                <property name="Condition description" value="..."/>
+            </properties>
+            <input ref="col_telefono"/>
+        </analyzer>
+    </analysis>
+</job>
