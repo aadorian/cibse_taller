@@ -105,6 +105,12 @@
 \setcopyright{none}%remueve el copyright
 \settopmatter{printacmref=false} % remueve la citación
 \renewcommand\footnotetextcopyrightpermission[1]{} %remueve el bottom footnote
+
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\keywordsname}{Palabras clave}
+\captionsetup[table]{name=Tabla} % Set table name to "Table"
+\captionsetup[figure]{name=Figura} % Set figure name to "Figure"
+
 \begin{document}
 
 %%
@@ -211,19 +217,24 @@ El objetivo de este trabajo es realizar un informe respecto de las siguientes ta
     \item Evaluación final de calidad. Análisis de resultados de medición. Niveles de calidad esperados.
 \end{enumerate}
 
-\section{Introducción}
+La estructura del documento es la siguiente. En la Sección \ref{sec:intro} se presenta la introducción de conceptos de data profiling, modelo de calidad de datos y dimensiones de calidad. 
+En la sección \label{sec:reporte}
 
-\subsection{Calidad de Datos}
+%---------------------------------------------
+\section{Introducción}
+\label{sec:intro}
+%---------------------------------------------
 \subsection{Data Profiling}
-The process of metadata discovery is known as data profiling. Profiling activities range from ad-hoc approaches, such as eye-balling random subsets of the data or formulating aggregation queries, to systematic inference of structural information and statistics of a dataset using dedicated profiling tools.
-\cite{abedjan2017data}. Data profiling is the set of activities and processes to determine the meta- data about a given dataset. Among the simpler results are per-column statistics, such as the number of null values and distinct values in a column, its data type, or the most frequent patterns of its data values. Metadata that are more difficult to compute involve multiple columns, such as inclusion, functional and order dependencies \cite{abedjan2017data}.
-The process of metadata discovery is known as data profiling. Profiling activities range from ad-hoc approaches, such as eye-balling random subsets of the data or formulating aggregation queries, to systematic inference of metadata via profiling algorithms \cite{abedjan2018introduction}. Data profiling plays an important role in use cases, such as data exploration, data integration, and data analytics \cite{abedjan2018introduction}. The aim of data Profiling measure data consistency and accuracy, detect data duplications in order to obtain the correct value of data that could be used in decision- making purposes \cite{elbaghazaoui2021data}
+
+"El proceso de descubrimiento de metadatos se conoce como ``data profiling''. Las actividades de ``data profiling'' van desde enfoques ``ad-hoc'', como subconjuntos aleatorios de datos, formulación de consultas de agregación, hasta la inferencia sistemática de información estructural y estadísticas de un conjunto de datos utilizando perfiles dedicados y herramientas.
+\cite{abedjan2017data}. La elaboración de ``data profiling'' es el conjunto de actividades y procesos para determinar los metadatos sobre un conjunto de datos determinado. Entre los resultados mas frecuentes se encuentran el establecer estadísticas por columna, como la cantidad de valores nulos y valores distintos en una columna, su tipo de datos o los patrones más frecuentes de sus valores de datos. Los metadatos que son más difíciles de calcular involucran múltiples columnas, como dependencias de inclusión, funcionales y de orden \cite{abedjan2017data}.
+El proceso de descubrimiento de metadatos se conoce como ``data profiling''. Las actividades de creación de perfiles van desde enfoques ``ad-hoc'', como subconjuntos aleatorios de datos o la formulación de consultas de agregación, hasta la inferencia sistemática de metadatos a través de algoritmos de creación de perfiles \cite{abedjan2018introduction}. La creación de ``data profiling'' juega un papel importante en distintos casos de uso, como ser la exploración de datos, la integración de datos y el análisis de datos \cite{abedjan2018introduction}. El objetivo de la elaboración de``data profiling''  mide la consistencia y precisión de los datos, detecta duplicaciones de los mismos para obtener el valor correcto de los datos que podrían usarse en la toma de decisiones \cite{elbaghazaoui2021data}.
 
 \subsection{Modelo de Calidad}
 
-ISO/IEC 25012 - Data Quality model: defines a general data quality model for data retained in a structured format within a computer system. It focuses on the quality of the data as part of a computer system and defines quality characteristics for target data used by humans and systems.
+ISO/IEC 25012 define modelo de calidad de datos como ``un modelo general de calidad de datos para datos retenidos en un formato estructurado dentro de un sistema informático. Se centra en la calidad de los datos como parte de un sistema informático y define las características de calidad de los datos de destino utilizados por los seres humanos y los sistemas''.
 
-Data Quality model defined in the standard ISO/IEC 25012 is composed of 15 characteristics \url{https://iso25000.com/index.php/en/iso-25000-standards/iso-25012}
+El modelo de calidad de datos  ISO/IEC 25012 esta compuesto de quince características dentro de las cuales destacamos cuatro : Exactitud, Completitud , Consistencia y Comprensibilidad. \url{https://iso25000.com/index.php/en/iso-25000-standards/iso-25012}.
 
 
 
@@ -232,24 +243,17 @@ Data Quality model defined in the standard ISO/IEC 25012 is composed of 15 chara
   \label{tab:modelo}
   \begin{tabular}{lp{8cm}}
     \toprule
-    Characeristic &Definition\\
+    Característica &Definición\\
     \midrule
-    \textbf{Accuracy} &  The degree to which data has attributes that correctly represent the true value of the intended attribute of a concept or event in a specific context of use. \textbf{Syntactic Accuracy:} Syntactic accuracy is defined as the closeness of the data values to a set of values defined in a domain considered syntactically correct.
-    \textbf{Semantic Accuracy:} Semantic accuracy is defined as the closeness of the data values to a set of values defined in a domain considered semantically correct.\\
-    \textbf{Completeness} & The degree to which subject data associated with an entity has values for all expected attributes and related entity instances in a specific context of use. \\
-\textbf{Consistency} & The degree to which data has attributes that are free from contradiction and are coherent with other data in a specific context of use. It can be either or both among data regarding one entity and across similar data for comparable entities.\\
-\textbf{Understandability} & The degree to which data has attributes that enable it to be read and interpreted by users, and are expressed in appropriate languages, symbols and units in a specific context of use.
-Some information about data understandability are provided by metadata.\\
+    \textbf{Exactitud | Accuracy} & Grado en el que los datos tienen atributos que permiten ser leídos e interpretados por los usuarios y son expresados utilizando lenguajes, símbolos y unidades apropiados en un contexto de uso específico. Cierta información sobre la comprensibilidad puede ser expresada mediante metadatos.`` \textbf{Exactitud Sintáctica}: cercanía de los valores de los datos a un conjunto de valores definidos en un dominio considerado sintácticamente correcto. \textbf{Exactitud Semántica}: cercanía de los valores de los datos a un conjunto de valores definidos en un dominio considerado semánticamente correcto.
+\\
+    \textbf{Completitud | Completeness} & Grado en el que los datos asociados con una entidad tienen valores para todos los atributos esperados e instancias de entidades relacionadas en un contexto de uso específico. \\
+\textbf{Consistencia | Consistency} & Grado en el que los datos están libres de contradicción y son coherentes con otros datos en un contexto de uso específico. Puede ser analizada en datos que se refieran tanto a una como a varias entidades comparables. \\
+\textbf{Comprensibilidad | Understandability } & Grado en el que los datos tienen atributos que permiten ser leídos e interpretados por los usuarios y son expresados utilizando lenguajes, símbolos y unidades apropiados en un contexto de uso específico. Cierta información sobre la comprensibilidad puede ser expresada mediante metadatos. \\
 
   \bottomrule
 \end{tabular}
 \end{table*}
-
-
-\subsubsection{Dimensions of Quality}
-
-
-\cite{etcheverry2008qbox}
 
 
 %\verb|acmconf|}: The default proceedings template style.
@@ -258,7 +262,9 @@ Some information about data understandability are provided by metadata.\\
 %sigplan|}: Used for SIGPLAN conference articles.
 \section{Reporte}
 
-\subsection{Data Profiling de Archivos}
+En esta sección se describen los principales puntos establecidos por el objetivo del trabajo. 
+\label{sec:report}
+\subsection{Data Profiling de los 3  archivos publicados}
 
 \subsubsection{Fuente de datos}
 En el siguiente repositorio 
@@ -275,11 +281,11 @@ Los dataset analizados se encuentran disponibles en el siguiente link:
 
 \url{https://github.com/aadorian/cibse_taller/tree/main/profiling}
 
-\subsection{Categorias del Software de Profiling}
+\subsection{Categorías del Software de Profiling}
 
 En la Tabla~\ref{tab:sources} se presentan el tipo de alertas de categorias de alertas de profiling provistos por ydata-profiling versión vv4.1.2.
-\begin{table}
-  \caption{Alertas de ydata-profiling}
+\begin{table} [ht]
+  \caption{Tipos de alertas de ydata-profiling}
   \label{tab:sources}
   \begin{tabular}{ll} 
     \toprule
@@ -327,8 +333,7 @@ residentes del país fuera del mismo y por \textit{turismo emisivo} a la activid
 residentes del país fuera del mismo \url{https://www.impo.com.uy/bases/leyes/19253-2014}.
 
 El t\textit{urismo emisivo} contiene información de residentes en Uruguay con viajes al exterior, gasto y estadía de los mismos por país o destino del viaje, referente a cada trimestre del año\cite{gubemisivo}.
-El \textit{turismo receptivo} contiene información correspondientes a los visitantes que ingresaron a Uruguay, gasto y estadía de los mismos, referente a cada trimestre del año.
-\cite{gubreceptivo}. 
+El \textit{turismo receptivo} contiene información correspondientes a los visitantes que ingresaron a Uruguay, gasto y estadía de los mismos, referente a cada trimestre del año \cite{gubreceptivo}. 
 
 
 
@@ -338,7 +343,7 @@ El \textit{turismo receptivo} contiene información correspondientes a los visit
 En la Tabla~\ref{tab:modelo} se presentan el modelo de calidad. 
 La especificación del modelo de calidad se basa en la propuesta de Etcheverry et. al \cite{etcheverry2008qbox} originalmente basada a su vez en el concepto de GQM (Goal Quality Metrics) propuesto por Basili \cite{basili1992software}.
 
-Etcheverry et. al \cite{etcheverry2008qbox} propone la siguiente categorización.
+Etcheverry et. al \cite{etcheverry2008qbox} propone la siguiente categorización:
 
 \begin{itemize}
     \item \textbf{Dimensiones de calidad:} se caracteriza mediante múltiples dimensiones, que ayudan a clasificar los datos. Una dimensión captura un aspecto de alto nivel de la calidad.
@@ -348,10 +353,10 @@ Etcheverry et. al \cite{etcheverry2008qbox} propone la siguiente categorización
 
 \end{itemize}
 
-Se seleccionarion las siguientes dimensiones
-
+\subsubsection{Especificación Modelo de Operadores}
 La especificación del modelo cubrirá los datos de \textbf{Operadores}. 
-Se evaluaran la dimensión de \textbf{precisión} (Accuracy) y Unicidad. 
+Se evaluaran la dimensión de \textbf{Exactitud} ) y  Unicidad. 
+
 Las preguntas a formular en general son relacionadas con 
 \begin{itemize}
     \item ¿Estos datos son lo suficientemente precisos para nuestras necesidades?
@@ -362,6 +367,7 @@ Las preguntas a formular en general son relacionadas con
     
 \end{itemize}
 
+\subsubsection{Factores a Evaluar}
 Los tres factores a evaluar son : 
     Factor 1: \textbf{Exactitud semántica (Semantic accuracy)}, respondiendo a ¿Los datos se corresponden con la realidad?
 Eventualemnte los datos pueden  no corresponden a ningún estado del mundo real y/o a estado equivocado del mundo real y/o  con errores en algunos atributos.
@@ -371,39 +377,36 @@ Errores de valores: Valores fuera de rango, errores ortográficos y de tipeo.
 Errores de estandarización: Valores que no tienen el formato esperado. 
 Valores embebidos: Valores que corresponden a múltiples atributos.
 
-El método de medición será calcudo en forma directa midiéndolo directamente
+El método de medición será calculado en forma directa midiéndolo directamente
 (por ejemplo, contando el número de valores nulos en
 una tupla).
-    Factor 3: \textbf{Precisión} si los datos tienen el suficiente nivel de detalle
-
-Resumen 
-
-Exactitud semántica: si los datos representan entidades/estados del
- mundo real.
-Exactitud sintáctica: si los datos no tienen errores sintácticos.
-Precisión: si los datos tienen el suficiente nivel de detalle
 
 
+\begin{figure*}[h]
+  \label{fig:especificaciondisenioBD}
+  \centering
+  \includegraphics[width=\linewidth]{BD.png}
+  \caption{Especificación de diseño de BD de almacenamiento de medidas de calidad obtenidas en la medición} 
+  \Description{BD de almacenamiento de medidas de calidad obtenidas en la medición.}
+\end{figure*}
 
-Unicidad
-
-Factor: No-duplicación (duplication-free)
-Si el dato está duplicado o no, para factor de no-duplicación
-
-Preguntas 
-Factores de calidad
+\textit{Preguntas 
+Factores de calidad}
 
 \begin{enumerate}
     \item ¿Las categorías de los operadores se corresponden con los que estan regulados por el Ministerio? (Exactitud semántica)
     \item ¿Las direcciones de mail son correctas? (Exactitud sintáctica)
     \item ¿Los telefonos de contacto de los operadores son números válidos? (Exactitud sintáctica)
     \item ¿La geolocalización es precisa ? (Precisión)
+    \item ¿Los operadores estan duplicados?
 \end{enumerate}
 
+\subsubsection{Aspectos a evaluar y métricas instanciadas}
+En la Tabla~\ref{tab:modelometrica} se presentan los aspectos a evaluar. En particular se seleccionaron las metricas M1,M2;M3 de exactitud sintáctica, semantica y presición correspondientemente y M4 respecto de unicidad (no duplicación). 
+Las metricas variaron desde la verificación de fomrato, diccionario de datos, cantidades decimales hasta el ratio de no duplicados. 
+Los niveles de granularidad fueron a nivel de celda y tabla.
 
-En la Tabla~\ref{tab:modelometrica} se presentan los aspectos a evaluar
-y en la En la Tabla~\ref{tab:modelometricainstanciada} las métricas intanciadas.
-
+En la Tabla~\ref{tab:modelometricainstanciada} se presentan las métricas instanciadas. Las metricas M1, M2, M3 y M4 fueron instanciadas sobre el dataset de Operadores. La métrica M1, refería a el mail, bew y telefono de los cuales se verifico la correctitud del formato de mail estandar. Las otras métricas instanciadas referian a tipo de operador, departamente, longigud y latitud. 
 \begin{table*}
   \caption{Modelo de Metricas}
   \label{tab:modelometrica}
@@ -445,33 +448,28 @@ y en la En la Tabla~\ref{tab:modelometricainstanciada} las métricas intanciadas
 \subsection{Especificación de BD de almacenamiento de medidas de Calidad}
 
 
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\linewidth]{BD.png}
-  \caption{Especificación de diseño de BD de almacenamiento de medidas de calidad obtenidas en la medición} 
-  \Description{BD de almacenamiento de medidas de calidad obtenidas en la medición.}
-\end{figure*}
 
-
-\subsection{Ejecución de la medición de Calidad}
+En la Figura 1 se presenta el diseño de especificación de la base de datos donde se almacenarían las medidas de calidad obtenidas en la medición estableciendo la medición, factor y métrica asociada a la estructura de Operador. 
 
 
 
+Las medidas de calidad se almacenarán en  Google Drive y las distintas versiones de reportarán en el repositorio de GIT \footnote{\url{https://github.com/aadorian/cibse_taller}}. 
+URL de Google Drive \footnote{\url{https://docs.google.com/spreadsheets/d/1lcC7mO1O9nn1oqlAxfEHz2H4fmPsvC66tqk4KZLnMg8/edit?usp=sharing}}
 
 
-\subsection{Evaluación final de la Calidad }
+Los archivos fuentes de datos se trabajarán los los CSV que fueron provistos en formato original. Los archivos de trabajos de ejecución de la ejecución se realizarán en DataCleaner versión  5.8.1 (si bien no se realizará la etapa de limpieza, transformación y análisis posterior).  La ejecución de los mismos será exploratoria. 
 
 
-
-
-Me pareció interesante evaluar los datos de Operadores  turísticos \footnote{https://www.gub.uy/tramites/inscripcion-operador-turistico} por el hecho de su relevancia en el vínculo entre el turismo receptivo y emisivo.
+Evaluamos los datos de Operadores  turísticos \footnote{https://www.gub.uy/tramites/inscripcion-operador-turistico} por el hecho de su relevancia en el vínculo entre el turismo receptivo y emisivo.
 La actividad de operadores turísticos esta a su vez regulada y con registro de opereradores \url{https://www.gub.uy/tramites/inscripcion-operador-turistico}. 
 
 
 
-\section{Tablas}
+\section{Tablas resultados de emisivos, receptivos y operadores}
 
-En la Tabla~\ref{tab:emisivos} se presenta el resumen correspondiente al Data Profiling de Emisivos.
+
+
+En la Tabla~\ref{tab:emisivos} se presenta el resumen correspondiente al Data Profiling de  ``\verb|emisivos|''
 
 \begin{table}
   \caption{Resumen del Data Profiling de Emisivos}
@@ -494,10 +492,7 @@ En la Tabla~\ref{tab:emisivos} se presenta el resumen correspondiente al Data Pr
 \end{table}
 
 
-\textit{Nota:} Las alertas de la Tabla~\ref{tab:emisivos} corresponden a alta cardinalidad, valores faltantes, ceros y alta varianza.
-
-
-En la Tabla~\ref{tab:receptivos} se presenta el resumen correspondiente al Data Profiling de Receptivos.
+En la Tabla~\ref{tab:receptivos} se presenta el resumen correspondiente al data profiling de ``\verb|receptivos|''.
 
 \begin{table}
   \caption{Resumen del Data Profiling de Receptivos}
@@ -522,7 +517,9 @@ En la Tabla~\ref{tab:receptivos} se presenta el resumen correspondiente al Data 
 \textit{Nota:} Las alertas de la Tabla~\ref{tab:receptivos} corresponden a alta cardinalidad, desvalance, valores faltantes, ceros y alta varianza.
 
 
-En la Tabla~\ref{tab:operadores} se presenta el resumen correspondiente al Data Profiling de Operadores Turísticos.
+
+
+En la Tabla~\ref{tab:operadores} se presenta el resumen correspondiente al data profiling de ``\verb|operadopres|'' Turísticos.
 
 \begin{table}
   \caption{Resumen del Data Profiling de Operadores}
@@ -546,20 +543,12 @@ En la Tabla~\ref{tab:operadores} se presenta el resumen correspondiente al Data 
 \end{tabular}
 \end{table}
 
+
+
+
+\textit{Nota:} Las alertas de la Tabla~\ref{tab:emisivos} corresponden a alta cardinalidad, valores faltantes, ceros y alta varianza.
+
 \textit{Nota:} Las alertas de la Tabla~\ref{tab:operadores} corresponden a alta cardinalidad, duplicados y desvalance.
-
-The ``\verb|figure|'' environment should be used for figures. 
-
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\linewidth]{Overview.png}
-  \caption{Overview de Data Profiling Operadores} 
-  \Description{A woman and a girl in white dresses sit in an open car.}
-\end{figure*}
-
-
-
-
 
 \begin{table}
   \caption{Tipos }
@@ -583,80 +572,245 @@ The ``\verb|figure|'' environment should be used for figures.
 \end{tabular}
 \end{table}
 
-\section{Diseño}
 
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\linewidth]{1.png}
-  \caption{Especificación de Registro } 
-  \Description{Especificación de Registro del Data Profiling.}
-\end{figure*}
-
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\linewidth]{2.png}
-  \caption{Registro de Metricas} 
-  \Description{Registro de Metricas .}
-\end{figure*}
+\vfill
 
 
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\linewidth]{3.png}
-  \caption{Template de registro de ejecución } 
-  \Description{emplate de registro de ejecución.}
-\end{figure*}
 
+La creación de un diccionario de datos de categorías correspondientes a las publicadas en el ministerio permitió cotejar con los registros ingresados.
+
+\begin{table}[!h]
+   \caption{Nivel de riesgo calidad, umbral establecido en categorías: alto, medio y bajo }
+  \label{tab:receptivos}
+  \begin{tabular}{lcl}
+    \toprule
+    Nivel &Rango&\\
+    \midrule
+    alto & >90\% de los datos contienen errores  \\
+    medio  &  [60,90]\% de los datos contienen errores\\
+    bajo & < 60\% de los datos contienen errores
+
+\end{tabular}
+\end{table}
+
+En las Figuras 2 y 3 se presentan los snaphots de ejemplos de ejecución de ydataprofiling y DataCleaner respectivamente. 
+En las Figuras 4, 5, 6 y 7 presentadas en el anexo se ilustra los templates utilizados en el diseño de medición de calidad.
 
 \section{Resultados}
 
-Los tipos de Operadores validados por parte del Ministerio de Turimo de Uruguay son 10 : 
-agencia de viajes, transporte turístico, alojamiento turístico, prestadores de servicios turísticos inmobiliarios, turismo aventura, establecimiento enológico (prestan servicios de alojamiento), establecimiento enológico (no prestan servicios de alojamiento), sucursal, guía de turismo, organizadores profesionales de congresos, observación de cetáceos, arrendadora de vehículos sin conductor, prestadores de servicios turísticos rurales, salas de convenciones instaladas en establecimientos rurales, salas de convenciones instaladas en alojamientos turísticos, salas de convenciones instaladas en establecimientos que no requieren inscripción en el registro de prestadores de servicios turísticos.
-Fuente: \url{https://www.gub.uy/tramites/inscripcion-operador-turistico}
+ 
 
 
 
 
-\section{Resumen Ejecución}
 
-   \begin{table}
-  \caption{Ejecución}
-  \label{tab:ejecución}
-  \begin{tabular}{lcl}
+
+\subsection{Ejecución de la medición}
+
+La ejecución esta disponible en \footnote{\url{https://docs.google.com/spreadsheets/d/1lcC7mO1O9nn1oqlAxfEHz2H4fmPsvC66tqk4KZLnMg8/edit?usp=sharing}}
+
+En la Tabla \ref{tab:ejecuciontotal} se presenta el resumen de los resultados de medición. 
+
+Nota: las medidas 4.1 y 4.2 correspondientes a latitud, longitud no se realizaron, considerqando que el alcance que  problema excede las herramientas de data profiling que tenemos disponibles o que pudimos evaluar, sería interesante utilizar el mapeo de una herramienta de geolocalización que permitiera evaluar de forma automática la misma.
+
+\begin{table}[!h]
+  \caption{Resumen de resultados de medición. }
+  \label{tab:ejecuciontotal}
+  \begin{tabular}{lclll}
     \toprule
-    Dimension&Factor&Metrica\\
+    Medida ID & Total &Nivel Riesgo & Sin Datos & Porcentaje \\
     \midrule
-    Número de variables &  10 \\
-
+    1.1&	1&	bajo&	827 &0.0003\% \\
+    1.2	&3285&	alto&	1450	& 99\%	\\
+    2.1	& 6	&	bajo&			0.001\% \\
+    3.1	&3269&	alto &	0	&99\% \\
+    4.1	&	- &-  &-  & -\\
+    4.2	&	- &-  &-  & -\\
+    5.1	&1283&	bajo & 0 &39\%	\\
+    5.2	&2082&	medio & 0 &63\%	\\
+    5.1	&2277&	medio & 0 &69\%	\\
   \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{Evidencias de ejecución y reporte.}
+
+La ejecución de scripts ``job'' de DataCleaner estan disponibles en \url{https://github.com/aadorian/cibse_taller/tree/main/exec_dataprofiling/jobs}
+
+La visualización de la ejecución en formato HTML esta disponible en \url{https://github.com/aadorian/cibse_taller/tree/main/exec_dataprofiling/results}
+
+
+\section{Discusión}
+
+\subsection{Evaluación final de la calidad }
+
+La evaluación final de la calidad se presenta en detalle la Tabla \ref{tab:evaluacionfinal1} y \ref{tab:evaluacionfinal1} respectivamente. 
+En dichas tablas se presenta un análisis detallado del resultado de cada una de las medidas realizadas y comentarios, así como una posible sugerencia de acciones correctiva. 
+
+\subsection{Análisis de resultados de medición }
+
+Los resultados de medición presentados muestran un grado alto en relación a problemas de calidad. 
+Si bien se estableció un umbral arbitrario, si se consideraranque los errores de calidad en un rango de aceptación del nivel del 10\% podríamos decir que todas las métricas estarían en frente a la presencia de un alto grado de problemas de calidad de datos. 
+
+El análisis inicial exploratorio de este trabajo dio evidencia del descubrimiento de distintos tipos de errores. Por un lado los correspondiente a datos incompletos, errores de formato y de duplicación entre otros. 
+
+El nivel de confianza en la calidad de datos estudiada es de bajo nivel en general. Un análisis mas detallado y ejecución de un diseño mas elaborado permitiría identificar en mejor detalle la calidad de los mismos. 
+
+
+\subsection{Niveles de Calidad esperados}
+
+Los niveles obtenidos de calidad son bajos a nivel global. El análisis preliminar de este trabajo permite evidenciar que si los datos básicos de operadores turísticos contienen problemas de calidad, las decisiones basadas en datos que podrían surgir del análisis de los mismos podrían ser incorrectas y eventualmente inexactas. 
+
+
+\section{Conclusiones}
 
 
 
-      
+\begin{table*}
+  \caption{Evaluación Final de Calidad}
+    \label{tab:evaluacionfinal1}
+\begin{tabular}{|c|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Medida ID}  & \textbf{Nota} & \textbf{Sug. Acción Correctiva} & \textbf{Comentarios} \\ \hline
+1.1   & Si bien cumplen en su mayoría con el formato, varios mails estan registrados como listas con delimitadores distintos (ejemplo ; o / ). Otros directamente no tienen mail asignado. A su vez, unos con mayúscula. & Unificar a un único formato de minúsculas con una validación de la expresión regular correspondiente al mail. En caso de identificar un listado de emails, asignar una estructura adecuada para identificarlos. & Del total de registros 3288, 827 no tienen asignado un valor \\ \hline
+1.2   & Varios registros independientemente del formato http:// o https:// no cumplen con el formato estándar de acceso (por ejemplo, hay registros con espacios, caracteres especiales). & Unificar el formato y validar el acceso a la URL mediante un mecanismo semiatomático que permita establecer si la URL está disponible en tiempo real y se corresponde con el sitio web del operador. & Del total de registros 1450 no tienen URL \\ \hline
+2.1   & En general los registros están dentro del dominio especificado, si bien no se realizó un análisis exhaustivo del mismo. & Realizar un análisis de que la característica se corresponda con la localidad en la cual se encuentra el operador. &\\ \hline
+3.1   & 3269 del total de 3288 de los valores NO coincide con la definición formal del tipo de operador definido por el Ministerio de Turismo. Si bien uno podría mapear, por ejemplo, Inmobiliaria se podría eventualmente ser una Agencia de Viajes, pero podría ser catalogado inicialmente como Prestador servicio Turístico inmobiliario. A su vez, un mismo operador podría prestar varios servicios y esto no está contemplado. & Establecer un identificador que permita sin ambigüedad identificar el tipo de operador y que este corresponda con el asignado como categoría del Ministerio en \url{https://www.gub.uy/tramites/inscripcion-operador-turistico}. Rediseñar el diccionario de categorías. & El total del registro no se corresponden con la descripción exacta del tipo indicado como categoría en el ministerio. A su vez, por ejemplo, la categorización en sí debería ser no ambigua (SALAS DE CONVENCIONES instaladas en Establecimientos Rurales. SALAS DE CONVENCIONES instaladas en Alojamientos Turísticos. SALAS DE CONVENCIONES instaladas en establecimientos que no requieren inscripción en el Registro de Prestadores de Servicios Turísticos). En el registro se reporta SALA DE CONVENCIÓN y no necesariamente está clara a cuál de las tres posibles se refiere. \\ \hline
+4.1    & No se realizó una evaluación de latitud / longitud dado el alcance que  problema excede las herramientas de data profing que tenemos disponibles& &\\ \hline
+4.2    &  No se realizó una evaluación de latitud / longitud dado el alcance que  problema excede las herramientas de data profing que tenemos disponibles  & &\\ \hline
 
-\section{Conclusion}
+
+\end{tabular}
+\end{table*}
+
+
+
+
+ 
+
+
+
+\begin{table*}[h]
+  \caption{Continuación evaluación final de calidad.}
+  \label{tab:evaluacionfinal2}
+\begin{tabular}{|c|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Medida ID}  & \textbf{Nota} & \textbf{Sug. Acción Correctiva} & \textbf{Comentarios} \\ \hline
+5.1  & 2005 registros son únicos de operadores, y 1283 no son únicos completando asi los 3288 registros existentes & Establecer un criterio de unicidad en el listado.  & Varios registros estan duplicados por tipo de operador teniendo registros como por ejemplo ABITAB  que aparece 182 veces.  \\ \hline
+5.2  &  Varios mails estan registrados de forma incorrecta  &  Establecer un criterio de contacto de mail de los operadores & \\ \hline
+5.3  & 1011 de los 3288 son registros únicos. Sin embargo hay 2277 no únicos de los cuales 1450 no tienen descripción & Establecer un criterio de unicidad de URL del operador & \\ \hline
+\end{tabular}
+\end{table*}
+
+En este trabajo se realizó un ejemplo de aplicación de ``data profiling''. 
+Se aplicaron técnicas y métodos de análisis de datos para cumplir con los objetivos del trabajo. 
+Se especificación de un modelo de calidad de datos para luego ser ejecutado. 
+La utilización de dos herramientas como ydata-profiling y Data Cleaner 5.8.1 permitieron realizar la tarea de ejecución del diseño \footnote{https://datacleaner.github.io/downloads}. Se encontraron varios problemas de calidad de datos los cuales no necesariamente son sencillos de identificar a priori. La sistematización de diseño previo y ejecución posterior permitió seguir un proceso interesante. Un análisis mas riguroso y en detalle debería ser necesario para identificar los problemas de calidad de datos existentes. 
+
+
+
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
 %% (and NOT an unnumbered section). This ensures the proper
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
-\begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
-\end{acks}
-
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
+
+
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{sample-base}
 
 %%
 %% If your work has an appendix, this is the place to put it.
 \appendix
+
+
+\section{Snapshot de Herramientas}
+
+\begin{figure*}[h]
+  \centering
+   \label{fig:ydataprof}
+  \includegraphics[width=\linewidth]{Overview.png}
+  
+  \caption{Ejecución exploratoria inicial de Data Profiling Operadores.} 
+  \Description{Ejecución exploratoria inicial de Data Profiling Operadores.}
+\end{figure*}
+
+\begin{figure*}[h]
+  \centering
+   \label{fig:datacleanersnapshot}
+  \includegraphics[width=\linewidth]{gui.png}
+  \caption{Ejemplo de ejecución de job en DataCleaner} 
+  \Description{Ejemplo de ejecución de job en DataCleaner.}
+\end{figure*}
+
+
+\section{Templates de Diseño }
+\begin{figure*}[h]
+   \label{fig:templateregistro}
+  \centering
+
+  \includegraphics[width=\linewidth]{1.png}
+  \caption{Diseño de dimensión, factor y métrica. } 
+  \Description{Diseño de dimensión, factor y métrica.}
+\end{figure*}
+
+\begin{figure*}[h]
+   \label{fig:registrometrica}
+  \centering
+
+  \includegraphics[width=\linewidth]{2.png}
+  \caption{Instanciación de Métricas sobre Operadores.} 
+  \Description{Instanciación de Métricas sobre Operadores.}
+\end{figure*}
+
+
+\begin{figure*}[!h]
+  \centering
+   \label{fig:templateresistro}
+  \includegraphics[width=\linewidth]{3.png}
+  \caption{Diseño de Template de registro de ejecución } 
+  \Description{Diseño de Template de registro de ejecución.}
+\end{figure*}
+
+\begin{figure*}[!h]
+  \centering
+   \label{fig:templateresistro2}
+  \includegraphics[width=\linewidth]{1.png}
+  \caption{Especificación de Registro } 
+  \Description{Especificación de Registro.}
+\end{figure*}
+
+\subsection{Operadores turísticos categorías }
+\begin{enumerate}
+ \item AGENCIA DE VIAJES
+\item TRANSPORTE TURISTICO
+\item ALOJAMIENTO TURÍSTICO
+\item PRESTADORES DE SERVICIOS TURISTICOS INMOBILIARIOS
+\item TURISMO AVENTURA
+\item ESTABLECIMIENTO ENOLÓGICO (Prestan servicios de alojamiento).
+\item ESTABLECIMIENTO ENOLÓGICO (NO Prestan servicios de  alojamiento).
+SUCURSAL
+\item GUIA DE TURISMO
+\item ORGANIZADORES PROFESIONALES DE CONGRESOS
+\item OBSERVACIÓN DE CETÁCEOS
+\item ARRENDADORA DE VEHÍCULOS SIN CONDUCTOR
+\item PRESTADORES DE SERVICIOS TURISTICOS RURALES
+\item SALAS DE CONVENCIONES instaladas en Establecimientos Rurales.
+\item SALAS DE CONVENCIONES instaladas en Alojamientos Turísticos.
+\item SALAS DE CONVENCIONES instaladas en establecimientos que no requieren inscripción en el \item Registro de Prestadores de Servicios Turísticos
+\end{enumerate}
+
+
+
+Fuente: \url{https://www.gub.uy/tramites/inscripcion-operador-turistico}
+
+\footnote{El registro de ejecución y comentarios de evaluación final esta disponible en la siguiente planilla: \url{https://docs.google.com/spreadsheets/d/1lcC7mO1O9nn1oqlAxfEHz2H4fmPsvC66tqk4KZLnMg8/edit?usp=sharing}}
+
+
 
 \end{document}
 \endinput

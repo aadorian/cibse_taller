@@ -1459,8 +1459,8 @@
   \global\@ACM@journal@bibstripfalse
 }
 \if@ACM@journal\else
-\acmConference[Conference'17]{ACM Conference}{July 2017}{Washington,
-  DC, USA}%
+\acmConference[Calidad de Datos]{Ingeniería Software}{mayo 2023}{Montevideo,
+ Cibse, Uruguay}%
 \fi
 \def\acmBooktitle#1{\gdef\@acmBooktitle{#1}}
 \acmBooktitle{}
@@ -2141,15 +2141,15 @@
     \if@ACM@authorversion\else
       \if@printpermission\@copyrightpermission\par\fi
     \fi
-    \if@ACM@manuscript\else
-       \if@ACM@journal@bibstrip\else % Print the conference information
-         \if@ACM@engage
-            {\itshape \@acmBooktitle, \@acmYear.}\par
-         \else
-         {\itshape \acmConference@shortname, \acmConference@date, \acmConference@venue}\par
-         \fi
-       \fi
-    \fi
+   % \if@ACM@manuscript\else
+   %    \if@ACM@journal@bibstrip\else % Print the conference information
+    %     \if@ACM@engage
+   %         {\itshape \@acmBooktitle, \@acmYear.}\par
+    %     \else
+    %     {\itshape \acmConference@shortname, \acmConference@date, \acmConference@venue}\par
+    %     \fi
+    %   \fi
+   % \fi
     \if@printcopyright
       \copyright\ \@copyrightyear\ \@copyrightowner\\
     \else
