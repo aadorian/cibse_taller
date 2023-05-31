@@ -142,7 +142,14 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  Abstract
+El objetivo de este trabajo es realizar un informe respecto de las siguientes tareas: 
+\begin{enumerate}
+    \item Data profiling de tres archivos de datos publicados.
+    \item Especificación de un modelo de calidad de datos que cubra algounos de esos datos. Se deber´priorizar que aspectos y que datos se van a evaluar. Justificación. 
+    \item Especificación de la base de datos donde se almacenarán las medidas de calidad obtenidas en la medición. 
+    \item Ejecución de la medición de calidad. 
+    \item Evaluación final de calidad. Análisis de resultados de medición. Niveles de calidad esperados.
+\end{enumerate}
 \end{abstract}
 \settopmatter{printacmref=false}
 %%
@@ -182,7 +189,7 @@
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{datasets, neural networks, gaze detection, text tagging}
+\keywords{data profiling, data quality, big data}
 
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
@@ -207,18 +214,6 @@
 
 \tableofcontents
 
-\section{Objetivo}
-El objetivo de este trabajo es realizar un informe respecto de las siguientes tareas: 
-\begin{enumerate}
-    \item Data profiling de tres archivos de datos publicados.
-    \item Especificación de un modelo de calidad de datos que cubra algounos de esos datos. Se deber´priorizar que aspectos y que datos se van a evaluar. Justificación. 
-    \item Especificación de la base de datos donde se almacenarán las medidas de calidad obtenidas en la medición. 
-    \item Ejecución de la medición de calidad. 
-    \item Evaluación final de calidad. Análisis de resultados de medición. Niveles de calidad esperados.
-\end{enumerate}
-
-La estructura del documento es la siguiente. En la Sección \ref{sec:intro} se presenta la introducción de conceptos de data profiling, modelo de calidad de datos y dimensiones de calidad. 
-En la sección \label{sec:reporte}
 
 %---------------------------------------------
 \section{Introducción}
@@ -227,14 +222,11 @@ En la sección \label{sec:reporte}
 \subsection{Data Profiling}
 
 "El proceso de descubrimiento de metadatos se conoce como ``data profiling''. Las actividades de ``data profiling'' van desde enfoques ``ad-hoc'', como subconjuntos aleatorios de datos, formulación de consultas de agregación, hasta la inferencia sistemática de información estructural y estadísticas de un conjunto de datos utilizando perfiles dedicados y herramientas.
-\cite{abedjan2017data}. La elaboración de ``data profiling'' es el conjunto de actividades y procesos para determinar los metadatos sobre un conjunto de datos determinado. Entre los resultados mas frecuentes se encuentran el establecer estadísticas por columna, como la cantidad de valores nulos y valores distintos en una columna, su tipo de datos o los patrones más frecuentes de sus valores de datos. Los metadatos que son más difíciles de calcular involucran múltiples columnas, como dependencias de inclusión, funcionales y de orden \cite{abedjan2017data}.
-El proceso de descubrimiento de metadatos se conoce como ``data profiling''. Las actividades de creación de perfiles van desde enfoques ``ad-hoc'', como subconjuntos aleatorios de datos o la formulación de consultas de agregación, hasta la inferencia sistemática de metadatos a través de algoritmos de creación de perfiles \cite{abedjan2018introduction}. La creación de ``data profiling'' juega un papel importante en distintos casos de uso, como ser la exploración de datos, la integración de datos y el análisis de datos \cite{abedjan2018introduction}. El objetivo de la elaboración de``data profiling''  mide la consistencia y precisión de los datos, detecta duplicaciones de los mismos para obtener el valor correcto de los datos que podrían usarse en la toma de decisiones \cite{elbaghazaoui2021data}.
+\cite{abedjan2017data}. La elaboración de ``data profiling'' es el conjunto de actividades y procesos para determinar los metadatos sobre un conjunto de datos determinado. Entre los resultados mas frecuentes se encuentran el establecer estadísticas por columna, como la cantidad de valores nulos y valores distintos en una columna, su tipo de datos o los patrones más frecuentes de sus valores de datos. La creación de ``data profiling'' juega un papel importante en distintos casos de uso, como ser la exploración de datos, la integración de datos y el análisis de datos \cite{abedjan2018introduction}. El objetivo de la elaboración de``data profiling''  mide la consistencia y precisión de los datos, detectando duplicaciones de los mismos para obtener el valor correcto de los datos que podrían usarse en la toma de decisiones \cite{elbaghazaoui2021data}.
 
 \subsection{Modelo de Calidad}
 
-ISO/IEC 25012 define modelo de calidad de datos como ``un modelo general de calidad de datos para datos retenidos en un formato estructurado dentro de un sistema informático. Se centra en la calidad de los datos como parte de un sistema informático y define las características de calidad de los datos de destino utilizados por los seres humanos y los sistemas''.
-
-El modelo de calidad de datos  ISO/IEC 25012 esta compuesto de quince características dentro de las cuales destacamos cuatro : Exactitud, Completitud , Consistencia y Comprensibilidad. \url{https://iso25000.com/index.php/en/iso-25000-standards/iso-25012}.
+ISO/IEC 25012 define modelo de calidad de datos como ``un modelo general de calidad de datos para datos retenidos en un formato estructurado dentro de un sistema informático. Se centra en la calidad de los datos como parte de un sistema informático y define las características de calidad de los datos de destino utilizados por los seres humanos y los sistemas''. \footnote{\url{https://iso25000.com/index.php/en/iso-25000-standards/iso-25012}}.
 
 
 
@@ -283,7 +275,7 @@ Los dataset analizados se encuentran disponibles en el siguiente link:
 
 \subsection{Categorías del Software de Profiling}
 
-En la Tabla~\ref{tab:sources} se presentan el tipo de alertas de categorias de alertas de profiling provistos por ydata-profiling versión vv4.1.2.
+En la Tabla~\ref{tab:sources} se presentan el tipo de alertas de categorias de alertas de profiling provistos por la librería ydata-profiling versión vv4.1.2.
 \begin{table} [ht]
   \caption{Tipos de alertas de ydata-profiling}
   \label{tab:sources}
@@ -315,24 +307,19 @@ En la Tabla~\ref{tab:sources} se presentan el tipo de alertas de categorias de a
 
 \subsubsection{Resumen de resultados del DataProfiling}
 
-Los tipos de datos que reconoce ydata-profiling son: Boolean
-,Numerical, Categorical, Time-series,
-URL,Path,File, Image y  Date (and Datetime).
+Los tipos de datos que reconoce ydata-profiling son: boolean
+, numerical, categorical, time-series,
+URL, path, file, image y  date (and datetime).
 
 A continuación se presentan los resultados resumen de la realización de los dataProfiling a las fuentes de datos . 
 Para la generación del data profiling se utilizó la versión de ydata-profiling vv4.1.2 \url{https://ydata-profiling.ydata.ai/} que permite realizar el análisis de datos exploratorio 
 \url{https://github.com/ydataai/ydata-profiling}.
 
-
-
-
-\url{https://www.gub.uy/ministerio-turismo/datos-y-estadisticas/estadisticas/turismo-emisivo-2022}
-
-Según la normativa uruguaya se entiende por \textit{turismo emisivo} a la actividad turística que realizan los
+Según la normativa uruguaya se entiende por \textit{turismo emisivo}  a la actividad turística que realizan los
 residentes del país fuera del mismo y por \textit{turismo emisivo} a la actividad turística que realizan los
 residentes del país fuera del mismo \url{https://www.impo.com.uy/bases/leyes/19253-2014}.
 
-El t\textit{urismo emisivo} contiene información de residentes en Uruguay con viajes al exterior, gasto y estadía de los mismos por país o destino del viaje, referente a cada trimestre del año\cite{gubemisivo}.
+El \textit{turismo emisivo} contiene información de residentes en Uruguay con viajes al exterior, gasto y estadía de los mismos por país o destino del viaje, referente a cada trimestre del año\cite{gubemisivo}.
 El \textit{turismo receptivo} contiene información correspondientes a los visitantes que ingresaron a Uruguay, gasto y estadía de los mismos, referente a cada trimestre del año \cite{gubreceptivo}. 
 
 
@@ -355,7 +342,7 @@ Etcheverry et. al \cite{etcheverry2008qbox} propone la siguiente categorización
 
 \subsubsection{Especificación Modelo de Operadores}
 La especificación del modelo cubrirá los datos de \textbf{Operadores}. 
-Se evaluaran la dimensión de \textbf{Exactitud} ) y  Unicidad. 
+Se evaluaran la dimensión de \textbf{exactitud} ) y \textbf{ unicidad}. 
 
 Las preguntas a formular en general son relacionadas con 
 \begin{itemize}
@@ -369,18 +356,13 @@ Las preguntas a formular en general son relacionadas con
 
 \subsubsection{Factores a Evaluar}
 Los tres factores a evaluar son : 
-    Factor 1: \textbf{Exactitud semántica (Semantic accuracy)}, respondiendo a ¿Los datos se corresponden con la realidad?
+    \textbf{\textit{Factor 1:}} \textbf{Exactitud semántica (Semantic accuracy)}, respondiendo a ¿Los datos se corresponden con la realidad?
 Eventualemnte los datos pueden  no corresponden a ningún estado del mundo real y/o a estado equivocado del mundo real y/o  con errores en algunos atributos.
-    Factor 2: \textbf{Exactitud sintáctica} \textbf{(Syntactic accuracy)}: respondiendoa ¿Los datos tienen errores sintácticos o de formato?
+    \textit{\textbf{Factor 2: }}\textbf{Exactitud sintáctica} \textbf{(Syntactic accuracy)}: respondiendoa ¿Los datos tienen errores sintácticos o de formato?
 Eventualmente los datos podrían presentar: 
 Errores de valores: Valores fuera de rango, errores ortográficos y de tipeo. 
 Errores de estandarización: Valores que no tienen el formato esperado. 
 Valores embebidos: Valores que corresponden a múltiples atributos.
-
-El método de medición será calculado en forma directa midiéndolo directamente
-(por ejemplo, contando el número de valores nulos en
-una tupla).
-
 
 \begin{figure*}[h]
   \label{fig:especificaciondisenioBD}
@@ -406,7 +388,7 @@ En la Tabla~\ref{tab:modelometrica} se presentan los aspectos a evaluar. En part
 Las metricas variaron desde la verificación de fomrato, diccionario de datos, cantidades decimales hasta el ratio de no duplicados. 
 Los niveles de granularidad fueron a nivel de celda y tabla.
 
-En la Tabla~\ref{tab:modelometricainstanciada} se presentan las métricas instanciadas. Las metricas M1, M2, M3 y M4 fueron instanciadas sobre el dataset de Operadores. La métrica M1, refería a el mail, bew y telefono de los cuales se verifico la correctitud del formato de mail estandar. Las otras métricas instanciadas referian a tipo de operador, departamente, longigud y latitud. 
+En la Tabla~\ref{tab:modelometricainstanciada} se presentan las métricas instanciadas. Las metricas M1, M2, M3 y M4 fueron instanciadas sobre el dataset de Operadores. La métrica M1, refería a el mail, url y telefono de los cuales se verifico la correctitud del formato de mail estandar. Las otras métricas instanciadas referian a tipo de operador, departamente, longigud y latitud. 
 \begin{table*}
   \caption{Modelo de Metricas}
   \label{tab:modelometrica}
@@ -453,7 +435,7 @@ En la Figura 1 se presenta el diseño de especificación de la base de datos don
 
 
 
-Las medidas de calidad se almacenarán en  Google Drive y las distintas versiones de reportarán en el repositorio de GIT \footnote{\url{https://github.com/aadorian/cibse_taller}}. 
+Las medidas de calidad se almacenarán en  archivos planos Google Drive y las distintas versiones de cambios se reportarán en el repositorio de GIT \footnote{\url{https://github.com/aadorian/cibse_taller}}. 
 URL de Google Drive \footnote{\url{https://docs.google.com/spreadsheets/d/1lcC7mO1O9nn1oqlAxfEHz2H4fmPsvC66tqk4KZLnMg8/edit?usp=sharing}}
 
 
@@ -461,7 +443,7 @@ Los archivos fuentes de datos se trabajarán los los CSV que fueron provistos en
 
 
 Evaluamos los datos de Operadores  turísticos \footnote{https://www.gub.uy/tramites/inscripcion-operador-turistico} por el hecho de su relevancia en el vínculo entre el turismo receptivo y emisivo.
-La actividad de operadores turísticos esta a su vez regulada y con registro de opereradores \url{https://www.gub.uy/tramites/inscripcion-operador-turistico}. 
+La actividad de operadores turísticos esta a su vez regulada y con registro de operadores \url{https://www.gub.uy/tramites/inscripcion-operador-turistico}. 
 
 
 
@@ -644,7 +626,7 @@ La visualización de la ejecución en formato HTML esta disponible en \url{https
 
 \subsection{Evaluación final de la calidad }
 
-La evaluación final de la calidad se presenta en detalle la Tabla \ref{tab:evaluacionfinal1} y \ref{tab:evaluacionfinal1} respectivamente. 
+La evaluación final de la calidad se presenta en detalle la Tabla \ref{tab:evaluacionfinal1} y \ref{tab:evaluacionfinal2} respectivamente. 
 En dichas tablas se presenta un análisis detallado del resultado de cada una de las medidas realizadas y comentarios, así como una posible sugerencia de acciones correctiva. 
 
 \subsection{Análisis de resultados de medición }
@@ -654,7 +636,7 @@ Si bien se estableció un umbral arbitrario, si se consideraranque los errores d
 
 El análisis inicial exploratorio de este trabajo dio evidencia del descubrimiento de distintos tipos de errores. Por un lado los correspondiente a datos incompletos, errores de formato y de duplicación entre otros. 
 
-El nivel de confianza en la calidad de datos estudiada es de bajo nivel en general. Un análisis mas detallado y ejecución de un diseño mas elaborado permitiría identificar en mejor detalle la calidad de los mismos. 
+El nivel de confianza en la calidad de datos estudiada es de bajo nivel en general. Un análisis mas detallado y ejecución de un diseño mas elaborado permitiría identificar en mejor detalle la calidad de los mismos, con el objetivo de posteriormente realizar acciones correctivas. 
 
 
 \subsection{Niveles de Calidad esperados}
